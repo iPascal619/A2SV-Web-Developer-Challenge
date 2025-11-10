@@ -23,6 +23,7 @@ export interface FoodFormData {
   food_name: string;
   food_rating: number;
   food_image: string;
+  food_price: number;
   restaurant_name: string;
   restaurant_logo: string;
   restaurant_status: 'Open Now' | 'Closed';
