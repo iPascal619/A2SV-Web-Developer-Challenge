@@ -23,20 +23,20 @@ export default function Hero({ onSearch }: HeroProps) {
   };
 
   return (
-    <section className="food-hero bg-[#FFB30E] py-16 md:py-24 px-8 md:px-[220px] relative overflow-hidden">
-      <div className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-[856px_1fr] gap-8 items-center">
-        <div className="relative z-10">
-          <div className="food-hero-content mb-10">
-            <h1 className="text-white text-[56px] md:text-[88px] font-bold leading-[1] mb-6">
+    <section className="food-hero bg-[#FFB30E] pt-10 md:pt-18 pb-0 px-8 md:px-[110px] relative overflow-hidden min-h-[580px]">
+      <div className="max-w-[1920px] mx-auto relative h-full">
+        <div className="max-w-[680px] relative z-10 pb-10 md:pb-18">
+          <div className="food-hero-content mb-7">
+            <h1 className="text-white text-[46px] md:text-[70px] font-bold leading-[1.1] mb-4">
               Are you starving?
             </h1>
-            <p className="text-white text-[20px] md:text-[22px] leading-[1.2]">
+            <p className="text-white text-[17px] md:text-[19px] leading-[1.3]">
               Within a few clicks, find meals that are accessible near you
             </p>
           </div>
 
           <div className="food-order-card bg-white rounded-2xl shadow-[0px_5px_10px_0px_rgba(255,174,0,0.26),0px_20px_40px_0px_rgba(255,174,0,0.29)]">
-            <div className="food-tabs flex gap-8 px-6 pt-6 pb-5 border-b border-gray-200">
+            <div className="food-tabs flex gap-7 px-5 pt-5 pb-4 border-b border-gray-200">
               <button
                 onClick={() => setActiveTab('delivery')}
                 className={`food-tab flex items-center gap-2 text-lg font-bold transition-colors ${
@@ -61,11 +61,11 @@ export default function Hero({ onSearch }: HeroProps) {
               </button>
             </div>
 
-            <div className="food-search-section p-6">
-              <div className="flex gap-4">
+            <div className="food-search-section p-5">
+              <div className="flex flex-col md:flex-row gap-3">
                 <div className="food-search-input-wrapper flex-1 relative">
                   <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#9E9E9E]">
-                    <FiSearch size={18} />
+                    <FiSearch size={17} />
                   </div>
                   <input
                     type="text"
@@ -74,15 +74,15 @@ export default function Hero({ onSearch }: HeroProps) {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onKeyPress={handleKeyPress}
-                    className="food-search-input w-full bg-[#F5F5F5] rounded-lg pl-12 pr-4 py-[17px] text-[17px] placeholder:text-[#9E9E9E] focus:outline-none focus:ring-2 focus:ring-[#F17228]"
+                    className="food-search-input w-full bg-[#F5F5F5] rounded-lg pl-12 pr-4 py-[14px] text-[15px] placeholder:text-[#9E9E9E] focus:outline-none focus:ring-2 focus:ring-[#F17228]"
                     data-testid="food-search-input"
                   />
                 </div>
                 <button
                   onClick={handleSearch}
-                  className="food-search-btn bg-[#F17228] hover:bg-[#D85D1E] text-white px-12 py-[17px] rounded-lg text-[17px] font-bold whitespace-nowrap transition-colors flex items-center gap-2"
+                  className="food-search-btn bg-[#F17228] hover:bg-[#D85D1E] text-white px-7 py-[14px] rounded-lg text-[15px] font-bold whitespace-nowrap transition-colors flex items-center justify-center gap-2"
                 >
-                  <FiSearch size={16} />
+                  <FiSearch size={15} />
                   <span>Find Meal</span>
                 </button>
               </div>
@@ -90,14 +90,14 @@ export default function Hero({ onSearch }: HeroProps) {
           </div>
         </div>
 
-        <div className="relative w-full h-[400px] lg:h-[505px] hidden lg:flex items-center justify-end -mr-[220px]">
-          <div className="relative w-[604px] h-[505px]">
+        <div className="absolute -right-[50px] -bottom-[136px] w-[410px] h-[490px] hidden lg:block">
+          <div className="relative w-full h-full">
             <Image
-              src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&h=800&fit=crop"
+              src="/images/Image Base.png"
               alt="Delicious ramen bowl"
               fill
-              className="object-cover rounded-full"
-              sizes="604px"
+              className="object-contain object-bottom"
+              sizes="410px"
               priority
             />
           </div>

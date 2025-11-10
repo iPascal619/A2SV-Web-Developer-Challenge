@@ -37,7 +37,7 @@ export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
           <div className="absolute top-4 md:top-6 left-4 md:left-6">
             <Badge variant="price">
               <FiTag size={18} />
-              <span>${food.price.toFixed(2)}</span>
+              <span>${Number(food.price).toFixed(2)}</span>
             </Badge>
           </div>
         )}
