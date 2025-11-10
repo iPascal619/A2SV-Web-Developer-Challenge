@@ -22,7 +22,7 @@ export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
 
   return (
     <div 
-      className="food-card bg-white rounded-[12px] sm:rounded-[16px] lg:rounded-[20px] overflow-hidden transition-all duration-150 animate-slideUp"
+      className="food-card bg-white rounded-[12px] sm:rounded-[16px] lg:rounded-[20px] overflow-hidden animate-slideUp"
       data-testid="food-card"
     >
       <div className="food-photo relative h-[200px] sm:h-[220px] md:h-[250px] lg:h-[301px] w-full bg-gray-100">

@@ -32,8 +32,8 @@ export default function DeleteFoodModal({ isOpen, onClose, onDelete, food }: Del
   return (
     <Modal isOpen={isOpen} onClose={onClose} className="w-full md:max-w-md">
       <div className="food-modal-content p-6 md:p-8">
-        <h2 className="text-[#424242] text-[24px] md:text-[28px] font-bold mb-4">
-          Delete Food
+        <h2 className="text-[#FF9A0E] text-[24px] md:text-[28px] font-bold mb-4 text-center">
+          Delete meal
         </h2>
         
         <p className="text-[#757575] text-[16px] mb-6">
@@ -50,17 +50,15 @@ export default function DeleteFoodModal({ isOpen, onClose, onDelete, food }: Del
           >
             Cancel
           </Button>
-          <Button
+          <button
             type="button"
-            variant="danger"
             onClick={handleDelete}
-            className="flex-1"
-            isLoading={isLoading}
+            className="flex-1 bg-gradient-to-r from-[#FF9A0E] to-[#FF9A0E] text-white px-6 py-3 rounded-lg font-bold text-lg transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
             disabled={isLoading}
             data-testid="food-delete-btn"
           >
-            {isLoading ? 'Deleting...' : 'Delete'}
-          </Button>
+            {isLoading ? 'Deleting...' : 'Yes'}
+          </button>
         </div>
       </div>
     </Modal>

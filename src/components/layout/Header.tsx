@@ -32,8 +32,7 @@ export default function Header({ onAddMealClick }: HeaderProps) {
           className="food-add-meal-btn text-[13px] sm:text-[14px] md:text-base lg:text-[18px] px-4 sm:px-5 md:px-6 lg:px-8 font-semibold whitespace-nowrap"
           data-testid="food-add-meal-btn"
         >
-          <span className="hidden sm:inline">Add Menu</span>
-          <span className="sm:hidden">Add</span>
+          Add Meal
         </Button>
       </div>
     </header>

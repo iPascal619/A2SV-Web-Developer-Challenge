@@ -186,8 +186,8 @@ export default function AddEditFoodModal({ isOpen, onClose, onSave, food }: AddE
   return (
     <Modal isOpen={isOpen} onClose={handleCancel} className="w-full md:max-w-2xl">
       <div className="food-modal-content p-6 md:p-8">
-        <h2 className="text-[#424242] text-[24px] md:text-[28px] font-bold mb-6">
-          {food ? 'Edit Food' : 'Add Food'}
+        <h2 className="text-[#F17228] text-[24px] md:text-[28px] font-bold mb-6 text-center">
+          {food ? 'Edit meal' : 'Add a meal'}
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -199,7 +199,7 @@ export default function AddEditFoodModal({ isOpen, onClose, onSave, food }: AddE
               id="food_name"
               name="food_name"
               type="text"
-              placeholder="Enter food name"
+              placeholder="Food name"
               value={formData.food_name}
               onChange={handleChange}
               className="w-full"
@@ -220,7 +220,7 @@ export default function AddEditFoodModal({ isOpen, onClose, onSave, food }: AddE
               id="food_rating"
               name="food_rating"
               type="number"
-              placeholder="Enter food rating (1-5)"
+              placeholder="Food rating (1-5)"
               value={formData.food_rating}
               onChange={handleChange}
               className="w-full"
@@ -244,7 +244,7 @@ export default function AddEditFoodModal({ isOpen, onClose, onSave, food }: AddE
               id="food_image"
               name="food_image"
               type="url"
-              placeholder="Enter food image URL"
+              placeholder="Food image URL"
               value={formData.food_image}
               onChange={handleChange}
               className="w-full"
@@ -265,7 +265,7 @@ export default function AddEditFoodModal({ isOpen, onClose, onSave, food }: AddE
               id="food_price"
               name="food_price"
               type="number"
-              placeholder="Enter food price"
+              placeholder="Food price"
               value={formData.food_price}
               onChange={handleChange}
               className="w-full"
@@ -287,7 +287,7 @@ export default function AddEditFoodModal({ isOpen, onClose, onSave, food }: AddE
               id="restaurant_name"
               name="restaurant_name"
               type="text"
-              placeholder="Enter restaurant name"
+              placeholder="Restaurant name"
               value={formData.restaurant_name}
               onChange={handleChange}
               className="w-full"
@@ -308,7 +308,7 @@ export default function AddEditFoodModal({ isOpen, onClose, onSave, food }: AddE
               id="restaurant_logo"
               name="restaurant_logo"
               type="url"
-              placeholder="Enter restaurant logo URL"
+              placeholder="Restaurant logo URL"
               value={formData.restaurant_logo}
               onChange={handleChange}
               className="w-full"
@@ -344,6 +344,13 @@ export default function AddEditFoodModal({ isOpen, onClose, onSave, food }: AddE
           </div>
 
           <div className="flex gap-3 pt-4">
+            <button
+              type="submit"
+              className="flex-1 bg-gradient-to-r from-[#FF9A0E] to-[#FF9A0E] text-white px-6 py-3 rounded-lg font-bold text-lg transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
+              disabled={isLoading}
+            >
+              {isLoading ? (food ? 'Saving...' : 'Adding...') : (food ? 'Save' : 'Add')}
+            </button>
             <Button
               type="button"
               variant="secondary"
@@ -352,15 +359,6 @@ export default function AddEditFoodModal({ isOpen, onClose, onSave, food }: AddE
               disabled={isLoading}
             >
               Cancel
-            </Button>
-            <Button
-              type="submit"
-              variant="primary"
-              className="flex-1"
-              isLoading={isLoading}
-              disabled={isLoading}
-            >
-              {isLoading ? (food ? 'Updating Food...' : 'Adding Food...') : 'Save'}
             </Button>
           </div>
         </form>

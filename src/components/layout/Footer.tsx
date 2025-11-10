@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { FiHeart } from 'react-icons/fi';
 
@@ -52,31 +53,42 @@ export default function Footer() {
             <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12">
               <h3 className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-bold uppercase opacity-60 mb-4 sm:mb-5 md:mb-6 lg:mb-10">Follow Us</h3>
               <div className="flex gap-3 sm:gap-4 text-lg sm:text-xl md:text-2xl">
+                <a href="#" className="hover:text-[#FFB30E] transition-colors" aria-label="Instagram">
+                  <FaInstagram />
+                </a>
                 <a href="#" className="hover:text-[#FFB30E] transition-colors" aria-label="Facebook">
                   <FaFacebookF />
                 </a>
                 <a href="#" className="hover:text-[#FFB30E] transition-colors" aria-label="Twitter">
                   <FaTwitter />
                 </a>
-                <a href="#" className="hover:text-[#FFB30E] transition-colors" aria-label="Instagram">
-                  <FaInstagram />
-                </a>
               </div>
             </div>
 
             <div>
-              <p className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] text-[#BBBBBB] mb-4 sm:mb-5 md:mb-6 lg:mb-10 leading-relaxed">
+              <p className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] text-[#BBBBBB] font-bold mb-4 sm:mb-5 md:mb-6 lg:mb-10 leading-relaxed">
                 Receive exclusive offers in your mailbox
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter Your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 bg-[#424242] text-white placeholder:text-[#ADADAD] px-3 sm:px-4 py-3 sm:py-4 rounded-lg text-[14px] sm:text-base focus:outline-none focus:ring-2 focus:ring-[#FFB30E]"
-                />
+                <div className="flex-1 relative">
+                  <div className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2">
+                    <Image
+                      src="/images/envelope.png"
+                      alt="Email"
+                      width={24}
+                      height={20}
+                      className="w-[22px] h-[18px] sm:w-[24px] sm:h-[20px] opacity-70"
+                    />
+                  </div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter Your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full bg-[#424242] text-white placeholder:text-[#ADADAD] pl-11 sm:pl-[52px] pr-3 sm:pr-4 py-3 sm:py-4 rounded-lg text-[14px] sm:text-base focus:outline-none focus:ring-2 focus:ring-[#FFB30E]"
+                  />
+                </div>
                 <button
                   onClick={handleSubscribe}
                   className="food-subscribe-btn bg-[#FFB30E] hover:bg-[#FFA500] text-[#212121] px-5 sm:px-6 py-3 sm:py-4 rounded-lg font-bold text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] transition-colors whitespace-nowrap"
@@ -97,7 +109,7 @@ export default function Footer() {
             </div>
             <div className="flex gap-2 items-center">
               <span>Made with</span>
-              <FiHeart className="text-red-500 fill-red-500" size={14} />
+              <FiHeart className="text-[#FDBC30] fill-[#FDBC30]" size={14} />
               <span>by</span>
               <span className="font-bold">Themewagon</span>
             </div>
