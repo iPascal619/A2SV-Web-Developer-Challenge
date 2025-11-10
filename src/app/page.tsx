@@ -110,8 +110,10 @@ export default function Home() {
             </div>
           ) : error ? (
             <EmptyState message={error} />
+          ) : foods.length === 0 ? (
+            <EmptyState message="Add your first meal to get started" />
           ) : filteredFoods.length === 0 ? (
-            <EmptyState message="Try adjusting your search" />
+            <EmptyState message="No meals found. Try a different search" />
           ) : (
             <div className="food-grid grid grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-8 xl:gap-10">
               {filteredFoods.map((food, index) => (
