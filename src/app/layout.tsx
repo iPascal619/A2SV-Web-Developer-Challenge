@@ -19,6 +19,10 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: "FoodWagen - Find Meals Near You",
   description: "Within a few clicks, find meals that are accessible near you",
+  icons: {
+    icon: "/images/Mask Group.svg",
+    apple: "/images/Mask Group.svg",
+  },
 };
 
 export default function RootLayout({
