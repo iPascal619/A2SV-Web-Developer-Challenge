@@ -37,11 +37,11 @@ export default function Modal({ isOpen, onClose, children, className = '' }: Mod
 
   return (
     <div 
-      className="food-modal-overlay fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 animate-fadeIn"
+      className="food-modal-overlay fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-0 sm:p-4 animate-fadeIn"
       onClick={onClose}
     >
       <div 
-        className={`food-modal bg-white rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto w-full max-w-2xl animate-slideUp ${className}`}
+        className={`food-modal bg-white rounded-none sm:rounded-2xl shadow-2xl max-h-[100vh] sm:max-h-[90vh] overflow-y-auto w-full max-w-full sm:max-w-2xl animate-slideUp ${className}`}
         onClick={(e) => e.stopPropagation()}
       >
         {children}
