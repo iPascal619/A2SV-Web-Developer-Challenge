@@ -76,37 +76,6 @@ FoodWagen is a full-stack food ordering application that demonstrates modern web
 - **Testing**: Jest & React Testing Library
 - **Deployment**: Vercel
 
-## Advanced Features Implemented
-
-### 1. React Query for Server State Management
-FoodWagen uses TanStack React Query for all server-side state management:
-- Automatic caching with configurable stale times (1 minute)
-- Background refetching to keep data fresh
-- Optimistic updates for instant UI feedback
-- Query invalidation on mutations
-- Custom hooks for all CRUD operations
-
-### 2. Zod Schema Validation
-All form data is validated using Zod schemas:
-- Type-safe runtime validation
-- Automatic TypeScript type inference
-- Field-level validation with descriptive error messages
-- Data transformation (string to number conversion)
-- Enum validation for restaurant status
-
-### 3. Performance Optimizations
-- **React.memo**: Components like `FoodCard` and `Hero` are memoized
-- **useCallback**: Event handlers are memoized to prevent recreation
-- **useMemo**: Expensive computations are memoized (e.g., filtered foods)
-- **Lazy Loading**: Modals are dynamically imported using `next/dynamic`
-- **Code Splitting**: Automatic route-based code splitting by Next.js
-
-### 4. Developer Experience
-- Full TypeScript coverage with strict type checking
-- Custom React Query hooks for clean, reusable data fetching
-- Zod schemas as single source of truth for validation
-- Comprehensive test coverage (17/17 tests passing)
-
 ## Getting Started
 
 ### Prerequisites
