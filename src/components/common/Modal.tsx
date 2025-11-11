@@ -41,7 +41,7 @@ export default function Modal({ isOpen, onClose, children, className = '' }: Mod
       onClick={onClose}
     >
       <div 
-        className={`food-modal bg-white rounded-none sm:rounded-2xl shadow-2xl max-h-[100vh] sm:max-h-[90vh] overflow-y-auto w-full max-w-full sm:max-w-2xl animate-slideUp ${className}`}
+        className={`food-modal bg-white rounded-none sm:rounded-2xl shadow-2xl max-h-[100vh] sm:max-h-[90vh] overflow-y-auto w-full max-w-full sm:max-w-2xl animate-slideUp py-6 sm:py-0 ${className}`}
         onClick={(e) => e.stopPropagation()}
       >
         {children}

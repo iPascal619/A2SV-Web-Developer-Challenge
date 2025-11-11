@@ -38,7 +38,7 @@ export default function Dropdown({ onEdit, onDelete }: DropdownProps) {
       </button>
 
       {isOpen && (
-        <div className="food-dropdown-menu absolute right-0 top-full mt-1 bg-white border border-[#EDEEF1] rounded-md shadow-lg py-1 min-w-[84px] z-10 animate-fadeIn">
+        <div className="food-dropdown-menu absolute right-0 top-full mt-1 bg-white border border-[#EDEEF1] rounded-md shadow-lg py-1 min-w-[84px] z-50 animate-fadeIn">
           <button
             onClick={() => {
               onEdit();
