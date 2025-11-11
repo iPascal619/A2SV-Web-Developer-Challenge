@@ -2,8 +2,9 @@
 
 import { useState, useCallback, useMemo } from 'react';
 import dynamic from 'next/dynamic';
+import toast from 'react-hot-toast';
 import { Header, Hero, Footer } from '@/components/layout';
-import { FoodCard, EmptyState } from '@/components/common';
+import { FoodCard, FoodCardSkeleton, EmptyState } from '@/components/common';
 import { Food, FoodFormData } from '@/types/food';
 import { useFoods, useCreateFood, useUpdateFood, useDeleteFood } from '@/hooks/useFoodQueries';
 import { searchFoods } from '@/services/foodService';
@@ -72,13 +73,16 @@ export default function Home() {
     try {
       if (selectedFood) {
         await updateMutation.mutateAsync({ id: selectedFood.id, data: foodData });
+        toast.success('Meal updated successfully!');
       } else {
         await createMutation.mutateAsync(foodData);
+        toast.success('Meal added successfully!');
       }
       // Clear search results to show updated data
       setSearchResults(null);
     } catch (err) {
       console.error('Error saving food:', err);
+      toast.error('Failed to save meal. Please try again.');
       throw err;
     }
   }, [selectedFood, createMutation, updateMutation]);
@@ -88,10 +92,12 @@ export default function Home() {
     
     try {
       await deleteMutation.mutateAsync(selectedFood.id);
+      toast.success('Meal deleted successfully!');
       // Clear search results to show updated data
       setSearchResults(null);
     } catch (err) {
       console.error('Error deleting food:', err);
+      toast.error('Failed to delete meal. Please try again.');
       throw err;
     }
   }, [selectedFood, deleteMutation]);
@@ -132,8 +138,10 @@ export default function Home() {
           </h2>
 
           {isDisplayLoading ? (
-            <div className="flex justify-center items-center py-12 sm:py-16 md:py-20">
-              <div className="animate-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 border-t-4 border-[#F17228]"></div>
+            <div className="food-grid grid grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-3 xl:gap-4">
+              {Array.from({ length: 8 }).map((_, index) => (
+                <FoodCardSkeleton key={index} />
+              ))}
             </div>
           ) : error ? (
             <EmptyState message="Failed to load meals. Please try again." />

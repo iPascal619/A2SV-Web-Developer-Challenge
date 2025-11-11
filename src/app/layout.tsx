@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Source_Sans_3, Open_Sans } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/providers/QueryProvider";
+import { Toaster } from "react-hot-toast";
 
 const sourceSans = Source_Sans_3({
   subsets: ["latin"],
@@ -37,6 +38,32 @@ export default function RootLayout({
         className={`${sourceSans.variable} ${openSans.variable} antialiased`}
       >
         <QueryProvider>{children}</QueryProvider>
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            duration: 3000,
+            style: {
+              background: '#fff',
+              color: '#424242',
+              padding: '16px',
+              borderRadius: '8px',
+              fontSize: '15px',
+              fontWeight: '600',
+            },
+            success: {
+              iconTheme: {
+                primary: '#79B93C',
+                secondary: '#fff',
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: '#FF3B30',
+                secondary: '#fff',
+              },
+            },
+          }}
+        />
       </body>
     </html>
   );
