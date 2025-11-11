@@ -13,11 +13,11 @@ export const foodSchema = z.object({
     .trim(),
   
   food_price: z
-    .string()
-    .refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
+    .union([z.string(), z.number()])
+    .transform((val) => typeof val === 'string' ? Number(val) : val)
+    .refine((val) => !isNaN(val) && val > 0, {
       message: 'Price must be a positive number',
-    })
-    .transform((val) => Number(val)),
+    }),
   
   food_description: z
     .string()
@@ -38,11 +38,11 @@ export const foodSchema = z.object({
     .trim(),
   
   food_rating: z
-    .string()
-    .refine((val) => !isNaN(Number(val)) && Number(val) >= 0 && Number(val) <= 5, {
+    .union([z.string(), z.number()])
+    .transform((val) => typeof val === 'string' ? Number(val) : val)
+    .refine((val) => !isNaN(val) && val >= 0 && val <= 5, {
       message: 'Rating must be between 0 and 5',
-    })
-    .transform((val) => Number(val)),
+    }),
   
   restaurant_status: z
     .enum(['Open Now', 'Closed'])

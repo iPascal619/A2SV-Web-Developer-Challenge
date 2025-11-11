@@ -197,6 +197,9 @@ export async function updateFood(id: string, foodData: FoodFormData): Promise<Fo
     });
 
     if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error('Meal not found. It may have been deleted.');
+      }
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 

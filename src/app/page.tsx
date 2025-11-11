@@ -82,7 +82,8 @@ export default function Home() {
       setSearchResults(null);
     } catch (err) {
       console.error('Error saving food:', err);
-      toast.error('Failed to save meal. Please try again.');
+      const errorMessage = err instanceof Error ? err.message : 'Failed to save meal. Please try again.';
+      toast.error(errorMessage);
       throw err;
     }
   }, [selectedFood, createMutation, updateMutation]);
@@ -97,7 +98,8 @@ export default function Home() {
       setSearchResults(null);
     } catch (err) {
       console.error('Error deleting food:', err);
-      toast.error('Failed to delete meal. Please try again.');
+      const errorMessage = err instanceof Error ? err.message : 'Failed to delete meal. Please try again.';
+      toast.error(errorMessage);
       throw err;
     }
   }, [selectedFood, deleteMutation]);
