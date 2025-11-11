@@ -60,6 +60,10 @@ const nextConfig: NextConfig = {
         hostname: 'placeholder.com',
       },
       {
+        protocol: 'https',
+        hostname: 'cdn.jsdelivr.net',
+      },
+      {
         protocol: 'http',
         hostname: 'localhost',
       },

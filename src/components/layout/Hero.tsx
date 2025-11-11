@@ -189,7 +189,7 @@ export default function Hero({ onSearch }: HeroProps) {
         </div>
 
         {/* Desktop Ramen Bowl - Original absolute position */}
-        <div className="absolute -right-[50px] -bottom-[140px] w-[410px] h-[490px] hidden lg:block">
+        <div className="absolute -right-[50px] -bottom-[142px] w-[410px] h-[490px] hidden lg:block">
           <div className="relative w-full h-full">
             <Image
               src="/images/Image Base.png"
