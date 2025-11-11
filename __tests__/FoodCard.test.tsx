@@ -61,7 +61,6 @@ describe('FoodCard Component', () => {
 
     const foodImage = screen.getAllByAltText('Beef Burger')[0];
     expect(foodImage).toBeInTheDocument();
-    // Next.js Image component transforms the src, so just check it contains the image reference
     expect(foodImage).toHaveAttribute('src');
   });
 
