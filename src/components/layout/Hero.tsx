@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback, memo } from 'react';
 import Image from 'next/image';
 import { FiTruck, FiShoppingBag, FiSearch } from 'react-icons/fi';
 
@@ -8,19 +8,19 @@ interface HeroProps {
   onSearch: (query: string) => void;
 }
 
-export default function Hero({ onSearch }: HeroProps) {
+function Hero({ onSearch }: HeroProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState<'delivery' | 'pickup'>('delivery');
 
-  const handleSearch = () => {
+  const handleSearch = useCallback(() => {
     onSearch(searchQuery);
-  };
+  }, [onSearch, searchQuery]);
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyPress = useCallback((e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       handleSearch();
     }
-  };
+  }, [handleSearch]);
 
   return (
     <section className="food-hero bg-[#FFB30E] pt-8 sm:pt-10 md:pt-8 lg:pt-32 pb-0 px-4 sm:px-6 md:px-8 lg:px-[110px] relative overflow-hidden min-h-[450px] sm:min-h-[500px] md:min-h-[480px] lg:min-h-[580px]">
@@ -205,4 +205,7 @@ export default function Hero({ onSearch }: HeroProps) {
     </section>
   );
 }
+
+// Memoize to prevent unnecessary re-renders
+export default memo(Hero);
 

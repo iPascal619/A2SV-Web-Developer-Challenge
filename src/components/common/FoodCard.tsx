@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import Image from 'next/image';
 import { FiTag, FiStar } from 'react-icons/fi';
 import { IoRestaurantOutline } from 'react-icons/io5';
@@ -14,7 +14,7 @@ interface FoodCardProps {
   onDelete: (food: Food) => void;
 }
 
-export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
+function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
   const [imageError, setImageError] = useState(false);
   const [logoError, setLogoError] = useState(false);
 
@@ -106,3 +106,6 @@ export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
     </div>
   );
 }
+
+// Memoize to prevent unnecessary re-renders
+export default memo(FoodCard);
