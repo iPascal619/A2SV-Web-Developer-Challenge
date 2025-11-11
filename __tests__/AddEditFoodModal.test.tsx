@@ -20,9 +20,9 @@ describe('AddEditFoodModal - User Interactions', () => {
       />
     );
 
-    // Click the Save button without filling the form
-    const saveButton = screen.getByRole('button', { name: /save/i });
-    fireEvent.click(saveButton);
+    // Click the Add button without filling the form (no food prop means Add mode)
+    const addButton = screen.getByRole('button', { name: /^add$/i });
+    fireEvent.click(addButton);
 
     // Wait for validation errors to appear
     await waitFor(() => {
@@ -76,8 +76,8 @@ describe('AddEditFoodModal - User Interactions', () => {
     );
 
     // Click submit to show validation errors
-    const saveButton = screen.getByRole('button', { name: /save/i });
-    fireEvent.click(saveButton);
+    const addButton = screen.getByRole('button', { name: /^add$/i });
+    fireEvent.click(addButton);
 
     // Wait for validation errors to appear
     await waitFor(() => {
@@ -113,8 +113,8 @@ describe('AddEditFoodModal - User Interactions', () => {
     await user.type(screen.getByLabelText(/restaurant logo url/i), 'https://example.com/logo.jpg');
     await user.selectOptions(screen.getByLabelText(/restaurant status/i), 'Open Now');
 
-    const saveButton = screen.getByRole('button', { name: /save/i });
-    fireEvent.click(saveButton);
+    const addButton = screen.getByRole('button', { name: /^add$/i });
+    fireEvent.click(addButton);
 
     await waitFor(() => {
       expect(mockOnSave).toHaveBeenCalledWith({
@@ -165,12 +165,12 @@ describe('AddEditFoodModal - User Interactions', () => {
     await user.type(screen.getByLabelText(/restaurant name/i), 'Test Restaurant');
     await user.type(screen.getByLabelText(/restaurant logo url/i), 'https://example.com/logo.jpg');
 
-    const saveButton = screen.getByRole('button', { name: /save/i });
-    fireEvent.click(saveButton);
+    const addButton = screen.getByRole('button', { name: /^add$/i });
+    fireEvent.click(addButton);
 
-    // Check for loading state
+    // Check for loading state (Adding... for new food)
     await waitFor(() => {
-      expect(screen.getByText(/adding food\.\.\./i)).toBeInTheDocument();
+      expect(screen.getByText(/adding\.\.\./i)).toBeInTheDocument();
     });
   });
 });
