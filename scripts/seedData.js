@@ -115,7 +115,7 @@ async function seedData() {
     await createFoods();
     console.log('\n✅ Data seeding completed successfully!');
   } catch (error) {
-    console.error('❌ Error seeding data:', error);
+    console.error('Error seeding data:', error);
   }
 }
 
