@@ -1,11 +1,28 @@
 /**
  * API Service for FoodWagen
- * Base URL: https://6852821e0594059b23cdd834.mockapi.io
  */
 
 import { Food, FoodFormData } from '@/types/food';
 
-const API_BASE_URL = 'https://6852821e0594059b23cdd834.mockapi.io';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://6852821e0594059b23cdd834.mockapi.io';
+
+// Input sanitization helper
+const sanitizeString = (input: string): string => {
+  return input
+    .replace(/[<>]/g, '') // Remove < and > to prevent XSS
+    .trim()
+    .substring(0, 500); // Limit length
+};
+
+// Validate URL format
+const isValidUrl = (url: string): boolean => {
+  try {
+    const urlObj = new URL(url);
+    return urlObj.protocol === 'http:' || urlObj.protocol === 'https:';
+  } catch {
+    return false;
+  }
+};
 
 // Type for MockAPI response structure
 interface MockAPIFoodItem {
@@ -92,13 +109,22 @@ export async function searchFoods(searchParam: string): Promise<Food[]> {
  */
 export async function createFood(foodData: FoodFormData): Promise<Food> {
   try {
+    // Sanitize inputs
+    const sanitizedName = sanitizeString(foodData.food_name);
+    const sanitizedRestaurantName = sanitizeString(foodData.restaurant_name);
+    const sanitizedImage = foodData.food_image && isValidUrl(foodData.food_image) ? foodData.food_image : '';
+    const sanitizedLogo = foodData.restaurant_logo && isValidUrl(foodData.restaurant_logo) ? foodData.restaurant_logo : '';
+    
+    // Validate rating range
+    const validRating = Math.min(5, Math.max(1, Number(foodData.food_rating)));
+
     const payload = {
-      name: foodData.food_name,
-      rating: foodData.food_rating,
-      image: foodData.food_image,
+      name: sanitizedName,
+      rating: validRating,
+      image: sanitizedImage,
       Price: '0.00', // MockAPI expects Price field
-      restaurantName: foodData.restaurant_name,
-      logo: foodData.restaurant_logo,
+      restaurantName: sanitizedRestaurantName,
+      logo: sanitizedLogo,
       status: foodData.restaurant_status,
     };
 
@@ -141,13 +167,22 @@ export async function createFood(foodData: FoodFormData): Promise<Food> {
  */
 export async function updateFood(id: string, foodData: FoodFormData): Promise<Food> {
   try {
+    // Sanitize inputs
+    const sanitizedName = sanitizeString(foodData.food_name);
+    const sanitizedRestaurantName = sanitizeString(foodData.restaurant_name);
+    const sanitizedImage = foodData.food_image && isValidUrl(foodData.food_image) ? foodData.food_image : '';
+    const sanitizedLogo = foodData.restaurant_logo && isValidUrl(foodData.restaurant_logo) ? foodData.restaurant_logo : '';
+    
+    // Validate rating range
+    const validRating = Math.min(5, Math.max(1, Number(foodData.food_rating)));
+
     const payload = {
-      name: foodData.food_name,
-      rating: foodData.food_rating,
-      image: foodData.food_image,
+      name: sanitizedName,
+      rating: validRating,
+      image: sanitizedImage,
       Price: '0.00', // MockAPI expects Price field
-      restaurantName: foodData.restaurant_name,
-      logo: foodData.restaurant_logo,
+      restaurantName: sanitizedRestaurantName,
+      logo: sanitizedLogo,
       status: foodData.restaurant_status,
     };
 
