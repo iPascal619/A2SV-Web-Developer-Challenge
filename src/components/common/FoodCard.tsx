@@ -61,12 +61,12 @@ export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
             </div>
 
             <div className="food-info flex-1 min-w-0">
-              <h3 className="food-name text-[#424242] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] font-bold leading-[1.2] truncate mb-1 sm:mb-1.5 lg:mb-[4px]">
+              <h3 className="food-name text-[#424242] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[14px] xl:text-[15px] font-bold leading-[1.2] mb-1 sm:mb-1.5 lg:mb-[4px]">
                 {food.name}
               </h3>
               <div className="food-rating flex items-center gap-1.5 sm:gap-2 lg:gap-[8px]">
-                <FiStar className="text-[#FFB30E] fill-[#FFB30E] w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] lg:w-[25px] lg:h-[23px]" />
-                <span className="food-rating-value text-[#FFB30E] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] font-semibold leading-[1.2]">
+                <FiStar className="text-[#FFB30E] fill-[#FFB30E] w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] lg:w-[16px] lg:h-[16px]" />
+                <span className="food-rating-value text-[#FFB30E] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[14px] xl:text-[15px] font-semibold leading-[1.2]">
                   {Number(food.rating).toFixed(1)}
                 </span>
               </div>

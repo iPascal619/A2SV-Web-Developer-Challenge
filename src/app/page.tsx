@@ -115,7 +115,7 @@ export default function Home() {
           ) : filteredFoods.length === 0 ? (
             <EmptyState message="No meals found. Try a different search" />
           ) : (
-            <div className="food-grid grid grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-8 xl:gap-10">
+            <div className="food-grid grid grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-3 xl:gap-4">
               {filteredFoods.map((food, index) => (
                 <FoodCard
                   key={`${food.id}-${index}`}
