@@ -23,7 +23,7 @@ export default function Hero({ onSearch }: HeroProps) {
   };
 
   return (
-    <section className="food-hero bg-[#FFB30E] pt-8 sm:pt-10 md:pt-8 lg:pt-16 pb-0 px-4 sm:px-6 md:px-8 lg:px-[110px] relative overflow-hidden min-h-[450px] sm:min-h-[500px] md:min-h-[480px] lg:min-h-[580px]">
+    <section className="food-hero bg-[#FFB30E] pt-8 sm:pt-10 md:pt-8 lg:pt-32 pb-0 px-4 sm:px-6 md:px-8 lg:px-[110px] relative overflow-hidden min-h-[450px] sm:min-h-[500px] md:min-h-[480px] lg:min-h-[580px]">
       <div className="max-w-[1920px] mx-auto relative h-full">
         {/* Tablet & Desktop: Side-by-side layout */}
         <div className="hidden md:grid md:grid-cols-[1fr_0.6fr] lg:grid-cols-1 gap-8 items-center">
@@ -189,14 +189,14 @@ export default function Hero({ onSearch }: HeroProps) {
         </div>
 
         {/* Desktop Ramen Bowl - Original absolute position */}
-        <div className="absolute -right-[50px] -bottom-[142px] w-[410px] h-[490px] hidden lg:block">
-          <div className="relative w-full h-full">
+        <div className="absolute -right-[50px] -bottom-[80px] w-[420px] h-[500px] hidden lg:block">
+          <div className="relative w-full h-full" style={{ filter: 'drop-shadow(-20px 25px 35px rgba(0, 0, 0, 0.35))' }}>
             <Image
               src="/images/Image Base.png"
               alt="Delicious ramen bowl"
               fill
               className="object-contain object-bottom"
-              sizes="410px"
+              sizes="420px"
               priority
             />
           </div>
