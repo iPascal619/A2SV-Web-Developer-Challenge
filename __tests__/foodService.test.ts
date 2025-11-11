@@ -127,7 +127,7 @@ describe('Food Service API - Mock Tests', () => {
             name: 'Pepperoni Pizza',
             rating: 4.7,
             image: 'https://example.com/pizza.jpg',
-            Price: '0.00',
+            Price: '12.99',
             restaurantName: 'Pizza House',
             logo: 'https://example.com/pizza-logo.jpg',
             status: 'Open Now',

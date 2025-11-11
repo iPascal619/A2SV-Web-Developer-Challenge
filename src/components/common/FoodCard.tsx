@@ -1,7 +1,9 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import { FiTag, FiStar } from 'react-icons/fi';
+import { IoRestaurantOutline } from 'react-icons/io5';
 import { Food } from '@/types/food';
 import Badge from './Badge';
 import Dropdown from './Dropdown';
@@ -13,6 +15,9 @@ interface FoodCardProps {
 }
 
 export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
+  const [imageError, setImageError] = useState(false);
+  const [logoError, setLogoError] = useState(false);
+
   if (!food.restaurant) {
     return null;
   }
@@ -26,16 +31,23 @@ export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
       data-testid="food-card"
     >
       <div className="food-photo relative h-[200px] sm:h-[220px] md:h-[250px] lg:h-[301px] w-full bg-gray-100 rounded-t-[12px] sm:rounded-t-[16px] lg:rounded-t-[20px] overflow-hidden">
-        {food.image && (
+        {food.image && !imageError ? (
           <Image
             src={food.image}
             alt={food.name}
             fill
             className="food-image object-cover"
             sizes="(max-width: 500px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 357px"
+            unoptimized
+            onError={() => setImageError(true)}
           />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-orange-100 via-yellow-50 to-orange-50">
+            <IoRestaurantOutline className="w-16 h-16 sm:w-20 sm:h-20 text-orange-300 mb-2" />
+            <span className="text-orange-400 text-xs sm:text-sm font-medium">Food Image</span>
+          </div>
         )}
-        {food.price && (
+        {food.price !== undefined && food.price !== null && (
           <div className="absolute top-4 sm:top-5 lg:top-6 left-4 sm:left-5 lg:left-6">
             <Badge variant="price">
               <FiTag size={14} className="sm:w-[16px] sm:h-[16px] lg:w-[18px] lg:h-[18px]" />
@@ -49,14 +61,20 @@ export default function FoodCard({ food, onEdit, onDelete }: FoodCardProps) {
         <div className="flex items-start justify-between gap-3 sm:gap-4">
           <div className="flex items-center gap-3 sm:gap-4 md:gap-5 lg:gap-[22px] flex-1 min-w-0">
             <div className="restaurant-logo relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
-              {food.restaurant.logo && (
+              {food.restaurant.logo && !logoError ? (
                 <Image
                   src={food.restaurant.logo}
                   alt={food.restaurant.name}
                   fill
                   className="object-cover"
                   sizes="(max-width: 640px) 40px, (max-width: 768px) 48px, (max-width: 1024px) 56px, 64px"
+                  unoptimized
+                  onError={() => setLogoError(true)}
                 />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-gray-200">
+                  <span className="text-gray-400 text-xs font-bold">{food.restaurant.name.charAt(0)}</span>
+                </div>
               )}
             </div>
 

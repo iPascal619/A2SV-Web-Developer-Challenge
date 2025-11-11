@@ -117,12 +117,13 @@ export async function createFood(foodData: FoodFormData): Promise<Food> {
     
     // Validate rating range
     const validRating = Math.min(5, Math.max(1, Number(foodData.food_rating)));
+    const validPrice = Number(foodData.food_price).toFixed(2);
 
     const payload = {
       name: sanitizedName,
       rating: validRating,
       image: sanitizedImage,
-      Price: '0.00', // MockAPI expects Price field
+      Price: validPrice, // MockAPI expects Price field
       restaurantName: sanitizedRestaurantName,
       logo: sanitizedLogo,
       status: foodData.restaurant_status,
@@ -175,12 +176,13 @@ export async function updateFood(id: string, foodData: FoodFormData): Promise<Fo
     
     // Validate rating range
     const validRating = Math.min(5, Math.max(1, Number(foodData.food_rating)));
+    const validPrice = Number(foodData.food_price).toFixed(2);
 
     const payload = {
       name: sanitizedName,
       rating: validRating,
       image: sanitizedImage,
-      Price: '0.00', // MockAPI expects Price field
+      Price: validPrice, // MockAPI expects Price field
       restaurantName: sanitizedRestaurantName,
       logo: sanitizedLogo,
       status: foodData.restaurant_status,
